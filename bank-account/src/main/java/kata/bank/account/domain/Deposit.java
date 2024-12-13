@@ -3,7 +3,7 @@ package kata.bank.account.domain;
 import java.math.BigDecimal;
 import java.util.Objects;
 
-public record Deposit(String clientId, BigDecimal amount, String accountId) {
+public record Deposit(String clientId, BigDecimal amount, String accountId) implements Operation {
 
     public Deposit {
         Objects.requireNonNull(clientId);
