@@ -1,17 +1,14 @@
 package kata.bank.account.service;
 
-import kata.bank.account.domain.Account;
-import kata.bank.account.domain.Client;
-
 import java.math.BigDecimal;
 
 public interface AccountService {
     // US 1
-    void saveMoney(Client client, BigDecimal amount, Account account);
+    void saveMoney(String clientId, BigDecimal amount, String accountId);
 
     // US 2
-    void retrieveSaving(Client client, BigDecimal amount, Account account);
-    
+    void retrieveSaving(String clientId, BigDecimal amount, String accountId);
+
     // requirement
-    void printStatement(Account account);
+    void printStatement(String accountId);
 }
