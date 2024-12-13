@@ -7,6 +7,7 @@ public class Client {
     private final String clientId;
 
     public Client(String clientId) {
+        Objects.requireNonNull(clientId);
         this.clientId = clientId;
     }
 

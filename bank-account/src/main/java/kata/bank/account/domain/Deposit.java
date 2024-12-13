@@ -1,4 +1,16 @@
 package kata.bank.account.domain;
 
-public class Deposit {
+import java.math.BigDecimal;
+import java.util.Objects;
+
+public record Deposit(String clientId, BigDecimal amount, String accountId) {
+
+    public Deposit {
+        Objects.requireNonNull(clientId);
+        Objects.requireNonNull(amount);
+        Objects.requireNonNull(accountId);
+        if (amount.compareTo(BigDecimal.ZERO) <= 0) {
+            throw new IllegalArgumentException("amount must be positive");
+        }
+    }
 }
