@@ -1,10 +1,12 @@
 package kata.bank.account.domain;
 
+import org.javamoney.moneta.Money;
+
 import java.util.Objects;
 
 public class Account {
-
     private final String accountId;
+    private Statement currentStatement = new Statement(this);
     private String clientId;
 
     public Account(String accountId, String clientId) {
@@ -12,6 +14,10 @@ public class Account {
         Objects.requireNonNull(clientId);
         this.accountId = accountId;
         this.clientId = clientId;
+    }
+
+    public void process(Operation operation) {
+        currentStatement.add(operation);
     }
 
     public String getAccountId() {
@@ -25,6 +31,22 @@ public class Account {
     public void setClientId(String clientId) {
         Objects.requireNonNull(clientId);
         this.clientId = clientId;
+    }
+
+    public Statement getCurrentStatement() {
+        return currentStatement;
+    }
+
+    public void nextStatement() {
+        currentStatement = new Statement(currentStatement);
+    }
+
+    public String printCurrentStatement() {
+        return currentStatement.toString();
+    }
+
+    public Money getAmount() {
+        return getCurrentStatement().getAmount();
     }
 
     @Override

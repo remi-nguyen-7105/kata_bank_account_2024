@@ -10,5 +10,7 @@ public interface AccountService {
     void retrieveSaving(String clientId, BigDecimal amount, String accountId);
 
     // requirement
-    void printStatement(String accountId);
+    String printStatement(String accountId);
+
+    void nextStatement(String accountId);
 }

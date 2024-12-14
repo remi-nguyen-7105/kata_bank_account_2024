@@ -31,6 +31,11 @@ public class Statement {
         this.previous = previous;
     }
 
+    public String toString() {
+        String template = "date :  %s  balance :  %s amount : %s";
+        return String.format(template, getDate(), getBalance(), getAmount());
+    }
+
     public Account getAccount() {
         return account;
     }
@@ -108,5 +113,4 @@ public class Statement {
             throw new InsufficientFundException(withdrawal.amount().toString());
         }
     }
-
 }
